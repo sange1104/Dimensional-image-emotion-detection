@@ -64,6 +64,8 @@ data
     └── test
 ```
 
+In addition, [NRC-VAD lexicon file](https://aclanthology.org/P18-1017/) is also needed for label conversion process. This file is required to be located in [data/]() directory.
+
 4. You can run [train.py]() setting arguments as follows: 
 * **gpu_num**: required, int
 * **dataname**: required, str, options = [FI, Flickr, Instagram, FlickrLDL, TwitterLDL]
