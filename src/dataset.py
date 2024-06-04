@@ -200,8 +200,9 @@ class DimensionalDataset(Dataset):
         # scaling to 1~9
         self.lexicon.iloc[:, 1:] = (self.lexicon.iloc[:, 1:] * 8) + 1
         # va labels
-        emo_ctg_va = np.stack([np.array(self.lexicon[self.lexicon.word==emo][['v', 'a']])[0] for emo in self.emo_ctg])
-        self.va = [np.dot(row[np.newaxis, :], emo_ctg_va)[0]/len(self.emo_ctg) for row in self.emo_dim]
+        emo_ctg_va = np.stack([np.array(self.lexicon[self.lexicon.word==emo][['v', 'a']])[0] for emo in self.emo_ctg]) 
+        self.va = [np.dot(row[np.newaxis, :], emo_ctg_va)[0]/sum(row==1) for row in self.labels]
+
         
         input_size = 448
         self.transforms = {
